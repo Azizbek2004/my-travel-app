@@ -1,0 +1,58 @@
+my-travel-app/
+├── public/
+│   ├── index.html
+│   └── favicon.ico
+├── src/
+│   ├── components/
+│   │   ├── Auth/
+│   │   │   ├── Login.js
+│   │   │   ├── Signup.js
+│   │   │   └── index.js
+│   │   ├── Profile/
+│   │   │   ├── Profile.js
+│   │   │   ├── EditProfile.js
+│   │   │   └── index.js
+│   │   ├── Post/
+│   │   │   ├── Post.js
+│   │   │   ├── CreatePost.js
+│   │   │   └── index.js
+│   │   ├── Search/
+│   │   │   ├── Search.js
+│   │   │   └── index.js
+│   │   ├── Admin/
+│   │   │   ├── AdminDashboard.js
+│   │   │   └── index.js
+│   │   └── Shared/
+│   │       ├── Header.js
+│   │       ├── Footer.js
+│   │       └── index.js
+│   ├── pages/
+│   │   ├── Home.js
+│   │   ├── ProfilePage.js
+│   │   ├── PostPage.js
+│   │   ├── SearchPage.js
+│   │   ├── AdminPage.js
+│   │   └── index.js
+│   ├── services/
+│   │   ├── auth.js
+│   │   ├── firestore.js
+│   │   ├── storage.js
+│   │   └── index.js
+│   ├── contexts/
+│   │   ├── AuthContext.js
+│   │   └── index.js
+│   ├── hooks/
+│   │   ├── useAuth.js
+│   │   └── index.js
+│   ├── utils/
+│   │   ├── helpers.js
+│   │   └── index.js
+│   ├── styles/
+│   │   ├── global.css
+│   │   └── theme.js
+│   ├── firebase.js
+│   ├── App.js
+│   ├── index.js
+├── .gitignore
+├── package.json
+└── README.md
