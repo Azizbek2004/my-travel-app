@@ -11,6 +11,7 @@ import Signup from './components/Auth/Signup';
 import CreatePost from './components/Post/CreatePost';
 import Header from './components/Shared/Header';
 import Footer from './components/Shared/Footer';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 function App() {
   return (
@@ -21,10 +22,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/create-post" element={<CreatePost />} />
-          <Route path="/post/:id" element={<PostPage />} />
-          <Route path="/search" element={<SearchPage />} />
+          <Route path="/profile" element={ <ProtectedRoute> <ProfilePage /> </ProtectedRoute> } />
+          <Route path="/create-post" element={ <ProtectedRoute> <CreatePost /> </ProtectedRoute> } />
+          <Route path="/post/:id" element={ <ProtectedRoute> <PostPage /> </ProtectedRoute> } />
+          <Route path="/search" element={ <ProtectedRoute> <SearchPage /> </ProtectedRoute> } />
           <Route path="/admin" element={<AdminPage />} />
         </Routes>
         <Footer />

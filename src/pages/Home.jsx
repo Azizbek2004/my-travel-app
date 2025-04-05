@@ -4,12 +4,27 @@ import Post from '../components/Post/Post';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getPosts().then((snapshot) => {
-      setPosts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-    });
+    const fetchPosts = async () => {
+      setLoading(true); 
+      try {
+        const snapshot = await getPosts();
+        setPosts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      } finally {
+        setLoading(false); 
+      }
+    };
+
+    fetchPosts();
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
