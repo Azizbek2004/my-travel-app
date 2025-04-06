@@ -15,6 +15,9 @@ my-travel-app/
 │   │   ├── Post/
 │   │   │   ├── Post.js
 │   │   │   ├── CreatePost.js
+│   │   │   ├── Likes.js         # New: Like button and count
+│   │   │   ├── Comments.js      # New: Comments section
+│   │   │   ├── ShareButton.js   # New: Share functionality
 │   │   │   └── index.js
 │   │   ├── Search/
 │   │   │   ├── Search.js
@@ -22,15 +25,21 @@ my-travel-app/
 │   │   ├── Admin/
 │   │   │   ├── AdminDashboard.js
 │   │   │   └── index.js
+│   │   ├── Messaging/           # New: Messaging components
+│   │   │   ├── MessageList.js
+│   │   │   ├── SendMessage.js
+│   │   │   └── index.js
 │   │   └── Shared/
 │   │       ├── Header.js
 │   │       ├── Footer.js
+│   │       ├── Spinner.js       # New: Loading indicator
 │   │       └── index.js
 │   ├── pages/
 │   │   ├── Home.js
 │   │   ├── ProfilePage.js
 │   │   ├── PostPage.js
 │   │   ├── SearchPage.js
+│   │   ├── MessagingPage.js     # New: Messaging page
 │   │   ├── AdminPage.js
 │   │   └── index.js
 │   ├── services/

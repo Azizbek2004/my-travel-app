@@ -1,48 +1,38 @@
-import React, { useState } from 'react';
-import { useAuth } from '../../hooks/useAuth';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 import { createPost } from '../../services/firestore';
-import { uploadImage } from '../../services/storage';
+import { useNavigate } from 'react-router-dom';
 
 const CreatePost = () => {
-  const { currentUser } = useAuth();
+  const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [image, setImage] = useState(null);
+  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!currentUser) {
-      alert('Please log in to create a post.');
-      return;
-    }
-    let imageUrl = '';
-    if (image) {
-      imageUrl = await uploadImage(
-        image,
-        `posts/${currentUser.uid}/${Date.now()}`
-      );
-    }
-    await createPost({
-      content,
-      imageUrl,
-      createdAt: Date.now(),
-      userId: currentUser.uid,
-    });
-    setContent('');
-    setImage(null);
-    alert('Post created!');
+    if (!currentUser) return alert('Please log in to create a post.');
+    await createPost({ title, content, userId: currentUser.uid });
+    navigate('/');
   };
 
   return (
     <div>
-      <h2>Create a Post</h2>
+      <h1>Create a Post</h1>
       <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Title"
+          required
+        />
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          placeholder="Write about your travel..."
+          placeholder="Tell your travel story..."
           required
         />
-        <input type="file" onChange={(e) => setImage(e.target.files[0])} />
         <button type="submit">Post</button>
       </form>
     </div>

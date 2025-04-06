@@ -1,30 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { getPosts } from '../services/firestore';
+import { getPostsRealTime } from '../services/firestore';
 import Post from '../components/Post/Post';
+import Spinner from '../components/Shared/Spinner';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      setLoading(true); 
-      try {
-        const snapshot = await getPosts();
-        setPosts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-      } catch (error) {
-        console.error('Error fetching posts:', error);
-      } finally {
-        setLoading(false); 
-      }
-    };
-
-    fetchPosts();
+    const unsubscribe = getPostsRealTime((data) => {
+      setPosts(data);
+      setLoading(false);
+    });
+    return () => unsubscribe();
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  if (loading) return <Spinner />;
 
   return (
     <div>
