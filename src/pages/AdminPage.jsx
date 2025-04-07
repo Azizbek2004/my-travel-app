@@ -1,9 +1,6 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
-import PostManagement from './PostManagement';
-import UserManagement from './UserManagement';
-import Analytics from './Analytics';
-import ModerationQueue from './ModerationQueue';
+import { AuthContext } from '../contexts';
+import { PostManagement, UserManagement,Analytics, ModerationQueue } from '../components/Admin';
 
 const AdminDashboard = () => {
   const { currentUser } = useContext(AuthContext);

@@ -7,6 +7,7 @@ import SearchPage from './pages/SearchPage';
 import MessagingPage from './pages/MessagingPage';
 import Login from './components/Auth/Login';
 import AdminPage from './pages/AdminPage';
+import {Header,Footer} from './components/Shared';
 
 const ProtectedRoute = ({ children }) => {
   const { currentUser } = useContext(AuthContext);
@@ -22,6 +23,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
+      <Header/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -51,6 +53,7 @@ function App() {
             }
           />
         </Routes>
+        <Footer/>
       </Router>
     </AuthProvider>
   );
